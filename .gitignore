@@ -1,3 +1,4 @@
 .bundle
 arturo*.gem
 tags
+Gemfile.lock

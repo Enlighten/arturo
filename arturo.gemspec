@@ -1,10 +1,10 @@
 # my_rails_engine.gemspec
 Gem::Specification.new do |gem|
   gem.version = '1.3.0'
-  gem.name = 'arturo'
+  gem.name = 'enphase-arturo'
   gem.files = Dir["lib/**/*", "app/**/*", "config/**/*"] + %w(README.md HISTORY.md)
-  gem.summary = "Feature sliders, wrapped up in an engine"
-  gem.description = "Deploy features incrementally to your users"
+  gem.summary = "Enphase specific fork. Feature sliders, wrapped up in an engine"
+  gem.description = "Enphase specific fork. Deploy features incrementally to your users"
   gem.email = "james.a.rosen@gmail.com"
   gem.homepage = "http://github.com/jamesarosen/arturo"
   gem.authors = ["James A. Rosen"]
