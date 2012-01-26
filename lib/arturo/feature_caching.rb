@@ -16,15 +16,14 @@ module Arturo
   # to use a shared cache like Memcached.
   module FeatureCaching
 
-    NIL_MARKER = Arturo::Feature.new
-
     def self.extended(base)
       class <<base
         alias_method_chain :to_feature, :caching
-        attr_accessor :cache_ttl, :feature_cache
+        attr_accessor :cache_ttl, :feature_cache, :nil_marker
       end
       base.cache_ttl = 0
       base.feature_cache = Arturo::FeatureCaching::Cache.new
+      base.nil_marker = Arturo::Feature.new
     end
 
     def caches_features?
@@ -39,10 +38,10 @@ module Arturo
         feature_cache.write(feature_or_symbol.symbol, feature_or_symbol, :expires_in => cache_ttl)
         feature_or_symbol
       elsif (cached_feature = feature_cache.read(feature_or_symbol.to_sym))
-        cached_feature == NIL_MARKER ? nil : cached_feature
+        cached_feature == nil_marker ? nil : cached_feature
       else
         f = to_feature_without_caching(feature_or_symbol)
-        feature_cache.write(feature_or_symbol.to_sym, f.nil? ? NIL_MARKER : f, :expires_in => cache_ttl)
+        feature_cache.write(feature_or_symbol.to_sym, f.nil? ? nil_marker : f, :expires_in => cache_ttl)
         f
       end
     end
