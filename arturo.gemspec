@@ -1,6 +1,6 @@
 # my_rails_engine.gemspec
 Gem::Specification.new do |gem|
-  gem.version = '1.3.2'
+  gem.version = '1.3.3'
   gem.name = 'enphase-arturo'
   gem.files = Dir["lib/**/*", "app/**/*", "config/**/*"] + %w(README.md HISTORY.md)
   gem.summary = "Enphase specific fork. Feature sliders, wrapped up in an engine"
